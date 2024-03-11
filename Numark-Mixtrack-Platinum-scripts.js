@@ -46,8 +46,8 @@ MixtrackPlatinum.init = function (id, debug) {
     MixtrackPlatinum.decks = new components.ComponentContainer();
     MixtrackPlatinum.decks[1] = new MixtrackPlatinum.Deck(1, 0x00, MixtrackPlatinum.effects[1]);
     MixtrackPlatinum.decks[2] = new MixtrackPlatinum.Deck(2, 0x01, MixtrackPlatinum.effects[2]);
-    MixtrackPlatinum.decks[3] = new MixtrackPlatinum.Deck(3, 0x02, MixtrackPlatinum.effects[1]);
-    MixtrackPlatinum.decks[4] = new MixtrackPlatinum.Deck(4, 0x03, MixtrackPlatinum.effects[2]);
+    //MixtrackPlatinum.decks[3] = new MixtrackPlatinum.Deck(3, 0x02, MixtrackPlatinum.effects[1]);
+    //MixtrackPlatinum.decks[4] = new MixtrackPlatinum.Deck(4, 0x03, MixtrackPlatinum.effects[2]);
 
     // set up two banks of samplers, 4 samplers each
     MixtrackPlatinum.sampler_all = new components.ComponentContainer();
@@ -88,7 +88,7 @@ MixtrackPlatinum.init = function (id, debug) {
     };
 
     // init a bunch of channel specific leds
-    for (var i = 0; i < 4; ++i) {
+    for (var i = 0; i < 2; ++i) {
         var group = "[Channel" + (i + 1) + "]";
 
         // keylock indicator
@@ -116,8 +116,8 @@ MixtrackPlatinum.init = function (id, debug) {
     // setup vumeter tracking
     engine.makeConnection("[Channel1]", "VuMeter", MixtrackPlatinum.vuCallback);
     engine.makeConnection("[Channel2]", "VuMeter", MixtrackPlatinum.vuCallback);
-    engine.makeConnection("[Channel3]", "VuMeter", MixtrackPlatinum.vuCallback);
-    engine.makeConnection("[Channel4]", "VuMeter", MixtrackPlatinum.vuCallback);
+    //engine.makeConnection("[Channel3]", "VuMeter", MixtrackPlatinum.vuCallback);
+    //engine.makeConnection("[Channel4]", "VuMeter", MixtrackPlatinum.vuCallback);
     engine.makeConnection("[Master]", "VuMeterL", MixtrackPlatinum.vuCallback);
     engine.makeConnection("[Master]", "VuMeterR", MixtrackPlatinum.vuCallback);
 };
@@ -129,7 +129,7 @@ MixtrackPlatinum.shutdown = function () {
     // re-enable demo mode.
 
     // turn off a bunch of channel specific leds
-    for (var i = 0; i < 4; ++i) {
+    for (var i = 0; i < 2; ++i) {
         // pfl/cue button leds
         midi.sendShortMsg(0x90 | i, 0x1B, 0x01);
 
